@@ -17,12 +17,26 @@ func getInput() ([]string, int) {
 }
 
 func findNumQuestions(entry string) int {
-	set := make(map[string]bool)
+	set := make(map[string]int)
+	list := strings.Split(entry, "\n")
+	numPeople := len(list)
+	numQu := 0
+
 	for i:=0; i<len(entry); i++ {
-		set[string(entry[i])] = true
+		if set[string(entry[i])] == 0 {
+			set[string(entry[i])] = 1
+		} else {
+			set[string(entry[i])]++
+		}
 	}
 	delete(set, "\n")
-	return len(set)
+	for k := range set {
+		if set[k] == numPeople {
+			numQu++
+		}
+	}
+
+	return numQu
 }
 
 func main() {
