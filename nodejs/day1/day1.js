@@ -1,13 +1,6 @@
-const fs = require('fs');
+const readFileInput = require('../helpers/readFileInput');
 
-const data = fs.readFileSync('input', 'utf-8');
-const lines = data.split("\n");
-// console.log(lines);
-
-const dataByLine = data.split('\n').map(function(item) {
-    return parseInt(item);
-});
-// console.log(dataByLine)
+const dataByLine = readFileInput.getNumbers();
 
 // Part 1
 for (let i=0; i< dataByLine.length; i++) {
